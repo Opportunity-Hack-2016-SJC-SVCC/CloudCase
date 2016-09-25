@@ -2,13 +2,15 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
+from ChildApp.forms import ChildForm
 from ChildApp.models import Child
 from ChildApp.models import ChildCaseOfficerMap
 
 def dashboard(request):
-
-    results = search(cm_list=[request.user.pk])
-    return JsonResponse(results)
+    # todo login. No anonymous user. No pk fopr him
+    return JsonResponse(get_list_cases_associated_with_case_officer(request.user.pk))
 
 
 def case_officer_case(request):
@@ -18,13 +20,17 @@ def case_officer_case(request):
         return create_case_associated_with_case_officer(request)
 
 
-def get_list_cases_associated_with_case_officer(request):
-    query = {}
-    ChildCaseOfficerMap.objects.filter()
-
+def get_list_cases_associated_with_case_officer(case_officer_id):
+    return search(cm_list=[case_officer_id])
 
 def create_case_associated_with_case_officer(request):
-    return JsonResponse()
+    data = request.POST
+    form = ChildForm(data)
+    if (form.is_valid()):
+        child = form.save()
+        return JsonResponse({'id': child.pk})
+    else:
+        return JsonResponse({'errors': form.errors})
 
 
 # return only meta like record_name, record_cat, record_type, created_at, created_by...

@@ -9,10 +9,10 @@ class Child(models.Model):
     first_name = models.CharField(max_length=30)
     middle_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    preferred_name = models.CharField(max_length=30)
+    preferred_name = models.CharField(max_length=30, null=True)
     dob = models.DateField()
     program = models.CharField(max_length=30)
-    notes = models.CharField(max_length=100)
+    notes = models.CharField(max_length=100, null=True)
 
     def serialize(self):
         return model_to_dict(self)
