@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "home">
+  <head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!--
+    <script>
+      var home = angular.module('home', []);
+      home.controller('homeCtrl', function($scope, $http){
+        $scope.search = function(){
+          $scope.recvdCases = {"lastName" : "heyaaa"};
+        }
+      }); 
+    </script>-->
+  </head>
+  <body ng-controller = "homeCtrl">
+    <div class="container" style = "width:100%">
+      <ul 
+      class="nav nav-bar nav-justified"
+      style = "background-color:#F7F7F7">
+        <li><img 
+            src = "C:\Users\vishn\Desktop\unity.jpg" 
+            width = "80px" 
+            height = "80px" 
+            style = "margin-left:15px"><span style = "position:absolute; margin-top:30px; font-size: 20px">My Briefcase</span></li>
+        <li class="active"><a data-toggle="tab" href="#searchCase" style = "height:60px">Search Case</a></li>
+        <li><a data-toggle="tab" href="#createCase" style = "height:60px">Create Case</a></li>
+        <li><a data-toggle="tab" href="#logOut"><span ng-model = "caseManagerName">caseManagerName</span><br>Log Out</a></li>
+      </ul>
+
+      <!--TAB CONTENT -->
+      <div class="tab-content">
+       <div id="searchCase" class="tab-pane fade in active">
+         <center><div style = "margin-top: 30px">
+           <input 
+            id = "inputSearchCase" 
+            style = "width:600px" 
+            class = "form-control" 
+            placeholder = "Search Case"></input>
+
+            <button style = "margin-top: 20px" ng-click = "search()">Search</button>
+
+            <div style = "margin-top: 40px">
+              <div 
+              id = "caseDetailsBox" 
+              style = "width:200px; 
+                      height:400px; 
+                      border-radius:10px; 
+                      background-color:#F7F7F7; 
+                      border-style: solid; 
+                      border-width: 0.5px; 
+                      border-color: #99CDE1
+                      margin-left:20px" 
+                      ng-repeat = "x in recvdCases"
+                         > 
+                
+                <p>{{x.lastName}}</p>
+                <p>{{x.firstName}}</p>
+                <p>{{x.middleName}}</p>
+                <p>{{x.preferredName}}</p>
+                <p>{{x.dateOfBirth}}</p>
+                <p>{{x.caseManager}}</p>
+                <p>{{x.notes}}</p>
+              </div>
+            </div>
+          </div></center>
+        </div>
+      
+        <div id = "createCase" class = "tab-pane fade">
+          <center><div class = "container" style = "width:400px; background-color:#F7F7F7; border-radius:20px; margin-top: 80px">
+            <input 
+              id = "caseManager" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 10px"
+              placeholder = "Case Manager"></input>
+
+              <input 
+              id = "intakeDate" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 10px"
+              placeholder = "Intake Date"></input>
+
+              <input 
+              id = "birthDay" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 10px"
+              placeholder = "Birth Day"></input>
+
+              <input 
+              id = "lastName" 
+              class = "form-control" 
+              style = "width:100%; margin-top:30px"
+              placeholder = "Last Name"></input>
+
+              <input 
+              id = "firstName" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 10px"
+              placeholder = "First Name"></input>
+
+              <input 
+              id = "middleName" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 10px"
+              placeholder = "Middle Name "></input>
+
+              <input 
+              id = "preferredName" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 30px"
+              placeholder = "Preferred Name"></input>
+
+              <input 
+              id = "program" 
+              class = "form-control" 
+              type = "dropdown"
+              style = "width:100%; margin-top: 30px"
+              placeholder = "Program"></input>
+
+              <input 
+              id = "notes" 
+              class = "form-control" 
+              style = "width:100%; margin-top: 30px"
+              placeholder = "Notes"></input>
+
+              <button 
+              id = "createCaseBtn" 
+              type = "submit"
+              class = "btn btn-primary"
+              style = "margin-top:20px; float:right">Create Case</button>
+              
+              <button 
+              id = "addDocuments" 
+              class = "btn btn-success" 
+              style = "margin-top:20px; float:left">Add Documents</button>
+
+              <p style = "margin-top: 40px"><br></p>
+
+          </div></center>
+        </div>
+        <div id = "logOut" class = "tab-pane fade">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

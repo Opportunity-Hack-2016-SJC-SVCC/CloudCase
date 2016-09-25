@@ -3,10 +3,11 @@
 	<title>My Briefcase</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 	<script src = "static/js/MyBriefcaseLoginPageAngular.js"></script>
 	</head>
 	<body ng-app = "myBriefcase">
@@ -15,13 +16,13 @@
 			<div class = "col-sm-2" style = "margin-top:10%; width:400px; height:auto">
 			<div>
 				<img 
-				src = "static/images/unitycareLogo.jpg"
+				src = "C:\Users\vishn\Desktop\unity.jpg" 
 				width = "200px" 
 				height = "180px" 
 				style = "margin-left:-15px"><span style = "position:absolute; TOP:125px; font-size: 20px">My Briefcase</span>
 			</div>
 			
-				<p>Username:</p> <input class = "form-control" ng-model = "username"></input>
+				<p>Username:</p> <input class = "form-control" type = "email" ng-model = "username"></input>
 				<p>Password: </p><input class = "form-control" type = "password" ng-model = "password"></input>
 				<button type = "submit" class = "btn btn-primary" ng-click = "submit()" style = "float:right; margin-top:20px">Log In</button>
 			</div>
