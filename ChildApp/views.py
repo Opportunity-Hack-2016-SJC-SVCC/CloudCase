@@ -8,7 +8,7 @@ from ChildApp.models import ChildCaseOfficerMap
 def dashboard(request):
 
     results = search(cm_list=[request.user.pk])
-    return JsonResponse()
+    return JsonResponse(results)
 
 
 def case_officer_case(request):
@@ -56,4 +56,4 @@ def search(first_name_list=None, middle_name_list=None, last_name_list=None, cm_
     serialized = []
     for child in children:
         serialized.append(child.serialize())
-    return JsonResponse({"query": query, "results": serialized})
+    return {"query": query, "results": serialized}
