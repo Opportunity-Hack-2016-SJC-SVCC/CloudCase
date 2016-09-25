@@ -1,19 +1,22 @@
 var myBriefcase = angular.module('myBriefcase',[]);
 myBriefcase.controller('myBriefcaseCtrl', function($scope, $http){
-	$http({
-		method : "POST",
-		url : "/validateLogin",				//API FOR VALIDATING THE CREDENTIALS
-		data : {
-			"username" : $scope.username,
-			"password" : $scope.password
-		}.success(function(data){
-			if(data.statusCode == "200"){
-				console.log("Login Success");
-				window.location = "/loginSuccess";	//REQUESTING NEXT PAGE ON SUCCESSSFUL LOGIN
-			}
-			else{
-				alert("Invalid Details");
-			}
-		})
-	})
+	$scope.submit = function()
+	{
+		var req = {
+		 method: 'POST',
+		 url: '/login',
+		 headers: {
+		   'Content-Type': 'application/json'
+		 },
+		 data: {"username" : $scope.username, "password" : $scope.password}
+		}
+
+		$http(req).then(function successCallback(response) {
+			// this callback will be called asynchronously
+			// when the response is available
+		  }, function errorCallback(response) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+		  });
+	}
 })
