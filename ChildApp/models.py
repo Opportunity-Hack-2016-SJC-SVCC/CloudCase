@@ -26,7 +26,7 @@ class ChildCaseOfficerMap(models.Model):
 
 
 class ChildBlob(models.Model):
-    record_key = models.CharField(unique=True)
+    record_key = models.CharField(unique=True,max_length=30)
     record_type = models.CharField(max_length=30)
     record_content = models.BinaryField()
     record_created_at = models.DateField(default=datetime.datetime.utcnow().date())
