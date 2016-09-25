@@ -5,10 +5,12 @@ from django.shortcuts import render
 from ChildApp.models import Child
 from ChildApp.models import ChildCaseOfficerMap
 
-
 def dashboard(request):
-    results = search(cm_list=[])
-    return JsonResponse()
+    return render(request, "index.html")
+
+# def dashboard(request):
+#     results = search(cm_list=[])
+#     return JsonResponse()
 
 
 def case_officer_case(request):
