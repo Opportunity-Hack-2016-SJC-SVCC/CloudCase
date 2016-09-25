@@ -15,8 +15,9 @@ class Child(models.Model):
     notes = models.CharField(max_length=100, null=True)
 
     def serialize(self):
-        return model_to_dict(self)
-
+        data = model_to_dict(self)
+        # data["caseOfficer"] = self.childcaseofficermap_set().case_officer.serialize()
+        return data
 
 class ChildCaseOfficerMap(models.Model):
     child = models.ForeignKey(Child)
