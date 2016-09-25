@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from django.shortcuts import render
 
@@ -8,6 +9,7 @@ from ChildApp.forms import ChildForm
 from ChildApp.models import Child
 from ChildApp.models import ChildCaseOfficerMap
 
+@login_required
 def dashboard(request):
     # todo login. No anonymous user. No pk fopr him
     return JsonResponse(get_list_cases_associated_with_case_officer(request.user.pk))
@@ -28,6 +30,8 @@ def create_case_associated_with_case_officer(request):
     form = ChildForm(data)
     if (form.is_valid()):
         child = form.save()
+        map = ChildCaseOfficerMap(child=child, case_officer=request.user.case_officer)
+        map.save()
         return JsonResponse({'id': child.pk})
     else:
         return JsonResponse({'errors': form.errors})
