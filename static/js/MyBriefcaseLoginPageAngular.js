@@ -4,7 +4,7 @@ myBriefcase.controller('myBriefcaseCtrl', function($scope, $http){
 	{
 		var req = {
 		 method: 'POST',
-		 url: '/login',
+		 url: '/user/login/',
 		 headers: {
 		   'Content-Type': 'application/json'
 		 },
