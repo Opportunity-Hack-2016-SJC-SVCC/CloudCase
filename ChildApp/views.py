@@ -4,10 +4,12 @@ from django.shortcuts import render
 # Create your views here.
 from ChildApp.models import Child
 
-
 def dashboard(request):
-    results = search(cm_list=[])
-    return JsonResponse()
+    return render(request, "index.html")
+
+# def dashboard(request):
+#     results = search(cm_list=[])
+#     return JsonResponse()
 
 def search(first_name_list=None, middle_name_list=None, last_name_list=None, cm_list=None):
     query = {}
